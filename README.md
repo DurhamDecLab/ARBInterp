@@ -52,6 +52,4 @@ ExampleVectorField.csv - part of a magnetic field, as vector components.
 ExampleScalarField.csv - the same field as ExampleVectorField, but the norm / magnitude.
 
 
-
-https://zenodo.org/badge/167368876.svg
-
+https://zenodo.org/badge/doi/10.5281/zenodo.2548610.svg
