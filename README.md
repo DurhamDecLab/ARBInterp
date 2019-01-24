@@ -20,7 +20,7 @@ Usage
 
 Instantiate the 'tricubic' class by passing a loaded field to it. It is not necessary to order the x, y, z coordinates - the code will do that itself.
 
-NOTE: as of version 1.1, a regular field (i.e. with equal grid spacing in all dimensions) must be supplied. A future release will handle irregular grids, but performance will still be best with regular grids. The interpolant field does not have to be cubic, only cuboid.
+NOTE: as of version 1.0, a regular field (i.e. with equal grid spacing in all dimensions) must be supplied. A future release will handle irregular grids, but performance will still be best with regular grids. The interpolant field does not have to be cubic, only cuboid.
 
 If an N x 4 array is passed it will operate in scalar mode and return both the interpolated field magnitude and partial derivatives. 
 
