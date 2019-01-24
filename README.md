@@ -27,7 +27,9 @@ If an N x 4 array is passed it will operate in scalar mode and return both the i
 If an N x 6 array is passed it will accept an optional kword argument 'mode' with one of the following switches:
 
 'norm' - this takes the norm of the vector field as the interpolant. Magnitude and gradient returned.
+
 'vector' - interpolates the x, y and z field components separately and returns them together.
+
 'both' - returns the interpolated magnitude and gradients of the norm of the field, AND the vector components.
 
 If no argument is passed it will default to 'vector'. If a 'mode' kword is passed but an N x 4 array is detected, the kword will be ignored.
@@ -35,6 +37,7 @@ If no argument is passed it will default to 'vector'. If a 'mode' kword is passe
 There are two methods for querying the interpolant field:
 
 sInterp - takes a single Cartesian coordinate.
+
 rInterp - takes a range of Cartesian coordinates as an array. The first 3 columns are assumed to be the x,y,z coordinates. Further columns can be present e.g. velocity components - these are ignored.
 
 Included Files
