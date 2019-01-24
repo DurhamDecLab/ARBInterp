@@ -41,6 +41,9 @@ Included Files
 --------------
 
 ARBInterp.py - contains tricubic class and methods for querying interpolant field.
+
 ARBExample.py - loads an example field and queries it with sample coordinates.
+
 ExampleVectorField.csv - part of a magnetic field, as vector components.
+
 ExampleScalarField.csv - the same field as ExampleVectorField, but the norm / magnitude.
