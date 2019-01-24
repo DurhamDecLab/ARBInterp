@@ -50,3 +50,8 @@ ARBExample.py - loads an example field and queries it with sample coordinates.
 ExampleVectorField.csv - part of a magnetic field, as vector components.
 
 ExampleScalarField.csv - the same field as ExampleVectorField, but the norm / magnitude.
+
+
+
+https://zenodo.org/badge/167368876.svg
+
