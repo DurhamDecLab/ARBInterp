@@ -4,7 +4,7 @@ from numpy.core.umath_tests import inner1d
 import sys
 
 #######################release the schmoo########################################
-# Version 1.0.1, J5 code base
+# Version 1.0, J5 code base
 
 class tricubic:
 	def __init__(self, field, **kwargs):
