@@ -11,6 +11,9 @@ Python tools for tricubic interpolation of 3D gridded data, based on the scheme 
 
 Takes either a scalar field U as an N x 4 (x,y,z,U) array or a vector field B as an N x 6 (x, y, z, Bx, By, Bz) array.
 
+Scalar: returns magnitude and gradient.
+Vector: returns components, OR magnitude and gradient of vector norm, OR both.
+
 Package Dependencies
 --------------------
 - NumPy: Required.
@@ -49,4 +52,4 @@ ExampleVectorField.csv - part of a magnetic field, as vector components.
 
 ExampleScalarField.csv - the same field as ExampleVectorField, but the norm / magnitude.
 
-[![DOI](https://zenodo.org/badge/167368876.svg)](https://zenodo.org/badge/latestdoi/167368876)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.2548609.svg)](https://doi.org/10.5281/zenodo.2548609)
