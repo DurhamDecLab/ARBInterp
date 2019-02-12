@@ -1,7 +1,7 @@
-# ARBInterp
+#ARBTools 
 Tricubic spline interpolation for vector and scalar fields
 
-ARBTools
+ARBInterp
 =======
 
 Introduction
