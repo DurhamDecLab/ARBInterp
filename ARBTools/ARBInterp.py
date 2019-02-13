@@ -278,7 +278,7 @@ class tricubic:
 			norm =  inner1d(self.alphan[:,self.queryInd], (x*y*z))
 			grad = np.array([np.dot(self.alphan[:,self.queryInd], xx*y*z)/self.hx, np.dot(self.alphan[:,self.queryInd], x*yy*z)/self.hy, np.dot(self.alphan[:,self.queryInd], x*y*zz)/self.hz])
 			## Components, magnitude, gradient
-			return np.array((compx, compy, compz, norm)), grad
+			return np.array((compx, compy, compz)),norm, grad
 	
 	def rQuery1(self, query):
 		## Finds base cuboid indices of the points to be interpolated
@@ -461,7 +461,7 @@ class tricubic:
 		# Return gradient
 		grads = np.transpose(np.array([(inner1d(tn, (xx*y*z))/self.hx), (inner1d(tn, (x*yy*z))/self.hy), (inner1d(tn, (x*y*zz))/self.hz) ]))
 
-		return np.hstack((compsx, compsy, compsz, norms)), grads
+		return np.hstack((compsx, compsy, compsz)), norms, grads
 	
 	def getFieldParams(self):
 		## Make sure coords are sorted correctly
