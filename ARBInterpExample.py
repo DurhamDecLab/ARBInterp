@@ -9,7 +9,6 @@ if __name__ == '__main__':
 
 	print ("--- Loading field ---")
 	field = np.genfromtxt(fieldname+'.csv', delimiter=',')
-	field[:,:3] *= 1e-3
 	
 	Run = tricubic(field)
 
@@ -30,7 +29,6 @@ if __name__ == '__main__':
 
 	print ("--- Loading field ---")
 	field = np.genfromtxt(fieldname+'.csv', delimiter=',')
-	field[:,:3] *= 1e-3
 	
 	Run = tricubic(field, mode='both')
 

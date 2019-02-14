@@ -8,7 +8,7 @@ from ARBTools.ARBTrajec import trajectories
 if __name__ == '__main__':
 	mAr = 39.948		# Mass Ar
 	N = 100		# number of atoms
-	T = 0.04		# temperature in K
+	T = 0.01		# temperature in K
 
 	moment = 3	#	magnetic moment in Bohr magnetons - mJ x g-factor
 	# testing with Ar in 3P2 state = mJ = 2, low-field-seeking
@@ -16,7 +16,7 @@ if __name__ == '__main__':
 	tmax = 0.01	# end time of simulation
 	timestep = 1e-6 # really should be 1e-7 for very accurate work but larger steps OK for testing
 
-	fieldname = "ExampleTrapField"
+	fieldname = "ExampleVectorField"
 	field = np.genfromtxt(fieldname+'.csv', delimiter=',') # field to be interpolated
 	
 	ArTest = trajectories(field, mAr, moment) # creates class to iterate particle trajectories
