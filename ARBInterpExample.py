@@ -32,11 +32,6 @@ if __name__ == '__main__':
 	
 	Run = tricubic(field, mode='both')
 
-	coords=np.zeros((20,3))
-	coords[:,0]=np.linspace(-2e-3,2e-3,20)
-	coords[:,1]=np.linspace(-2e-3,2e-3,20)
-	coords[:,2]=np.linspace(-2e-3,2e-3,20)
-	
 	output = Run.sQuery((coords[3]))
 	print output
 	print '\n'
