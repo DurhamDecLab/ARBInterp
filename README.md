@@ -17,7 +17,7 @@ Usage
 
 Instantiate the 'tricubic' class by passing a loaded field to it. It is not necessary to order the x, y, z coordinates - the code will do that itself.
 
-NOTE: as of version 1.0, a regular field (i.e. with equal grid spacing in all dimensions) must be supplied. A future release will handle irregular grids, but performance will still be best with regular grids. The interpolant field does not have to be cubic, only cuboid.
+NOTE: a regular field (i.e. with equal grid spacing in all dimensions) must be supplied. The interpolant field does not have to be cubic, only cuboid.
 
 If an N x 4 array is passed it will operate in scalar mode and return both the interpolated field magnitude and partial derivatives. 
 
@@ -28,6 +28,8 @@ If an N x 6 array is passed it will accept an optional kword argument 'mode' wit
 'both' - returns the interpolated magnitude and gradients of the norm of the field, AND the vector components.
 
 If no argument is passed it will default to 'vector'. If a 'mode' kword is passed but an N x 4 array is detected, the kword will be ignored.
+
+The optional argument "quiet" can be passed, which suppresses screen print messages when the interpolation is activated. 
 
 To query the interpolant field call the "Query" method. Input can be a single set of Cartesian coordinates x,y,z or a range of points as an array.
 If a range, the first 3 columns are assumed to be the x,y,z coordinates. Further columns can be present e.g. velocity components - these are ignored.
