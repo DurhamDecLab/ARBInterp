@@ -29,10 +29,8 @@ If an N x 6 array is passed it will accept an optional kword argument 'mode' wit
 
 If no argument is passed it will default to 'vector'. If a 'mode' kword is passed but an N x 4 array is detected, the kword will be ignored.
 
-There are two methods for querying the interpolant field:
-
-sInterp - takes a single Cartesian coordinate.
-rInterp - takes a range of Cartesian coordinates as an array. The first 3 columns are assumed to be the x,y,z coordinates. Further columns can be present e.g. velocity components - these are ignored.
+To query the interpolant field call the "Query" method. Input can be a single set of Cartesian coordinates x,y,z or a range of points as an array.
+If a range, the first 3 columns are assumed to be the x,y,z coordinates. Further columns can be present e.g. velocity components - these are ignored.
 
 Included Files
 --------------
@@ -44,4 +42,4 @@ ExampleScalarField.csv - the same field as ExampleVectorField, but the norm / ma
 
 ARBTrajec.py - contains function for creating random atom samples, and tracking their motion through a magnetic field with the interpolator
 ARBTrajecExample.py - creates test sample, saves it, iterates it through test field, saves output
-ExampleTrapField.csv - an example of a magnetic trap field
+
