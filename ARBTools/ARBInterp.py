@@ -212,7 +212,6 @@ class tricubic:
 	def sQuery1(self, query):
 		### Removes particles that are outside of interpolation volume
 		if query[0] < self.xIntMin or query[0] > self.xIntMax or query[1] < self.yIntMin or query[1] > self.yIntMax or query[2] < self.zIntMin or query[2] > self.zIntMax:
-			print ('--- Query point outside interpolation volume --- ')
 			return np.nan
 		else:
 			### How many cuboids in is query point
@@ -251,7 +250,6 @@ class tricubic:
 	def sQuery2(self, query):
 		### Removes particles that are outside of interpolation volume
 		if query[0] < self.xIntMin or query[0] > self.xIntMax or query[1] < self.yIntMin or query[1] > self.yIntMax or query[2] < self.zIntMin or query[2] > self.zIntMax:
-			print ('--- Query point outside interpolation volume --- ')
 			return np.nan
 		else:
 			### How many cuboids in is query point
@@ -289,7 +287,6 @@ class tricubic:
 	def sQuery3(self, query):
 		### Removes particles that are outside of interpolation volume
 		if query[0] < self.xIntMin or query[0] > self.xIntMax or query[1] < self.yIntMin or query[1] > self.yIntMax or query[2] < self.zIntMin or query[2] > self.zIntMax:
-			print ('--- Query point outside interpolation volume --- ')
 			return np.nan
 		else:
 			### How many cuboids in is query point
