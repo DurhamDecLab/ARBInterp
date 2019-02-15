@@ -10,18 +10,22 @@ if __name__ == '__main__':
 	print ("--- Loading field ---")
 	field = np.genfromtxt(fieldname+'.csv', delimiter=',')
 	
-	Run = tricubic(field)
+	Run = tricubic(field)	# mode kword arg will be ignored if a scalar (Nx4) input is detected
 
 	coords=np.zeros((20,3))
 	coords[:,0]=np.linspace(-2e-3,2e-3,20)
 	coords[:,1]=np.linspace(-2e-3,2e-3,20)
 	coords[:,2]=np.linspace(-2e-3,2e-3,20)
 	
-	output = Run.sQuery((coords[3]))
+	output = Run.Query((coords[3]))
+	print '\n'
+	print 'Single point query, scalar field:'
 	print output
 	print '\n'
 	
-	Comps = Run.rQuery(coords)
+	Comps = Run.Query(coords)
+	print '\n'
+	print 'Multi point query, scalar field:'
 	print (Comps)
 
 	
@@ -30,11 +34,15 @@ if __name__ == '__main__':
 	print ("--- Loading field ---")
 	field = np.genfromtxt(fieldname+'.csv', delimiter=',')
 	
-	Run = tricubic(field, mode='both')
+	Run = tricubic(field, mode='both')	# mode options are 'both', 'vector' or 'norm', defaults to 'vector'. Pass arg 'quiet' to suppress setup text
 
-	output = Run.sQuery((coords[3]))
+	output = Run.Query((coords[3]))
+	print 'Single point query, vector field:'
+	print '\n'
 	print output
 	print '\n'
 	
-	Comps = Run.rQuery(coords)
+	Comps = Run.Query(coords)
+	print 'Multi point query, vector field:'
+	print '\n'
 	print (Comps)
