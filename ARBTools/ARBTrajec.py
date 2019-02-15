@@ -4,7 +4,7 @@ import random as rand
 from ARBTools.ARBInterp import tricubic
 
 #######################release the schmoo########################################
-# Version 1.1, A3 code base
+# Version 1.3, A4 code base
 
 class trajectories:
 	def __init__(self, field, mass, moment):
@@ -156,11 +156,16 @@ class trajectories:
 	
 	def Iterate(self, sample, tm, h):
 		try:
-			width = sample.shape[1]
-			t = 0
-			while t < tm:
-				self.rRK3d(sample, h)		# Perform RK on distribution
-				t += h
+			if sample.shape[1] > 1:
+				t = 0
+				while t < tm:
+					self.rRK3d(sample, h)		# Perform RK on distribution
+					t += h
+			else:
+				t = 0
+				while t < tm:
+					self.sRK3d(sample, h)		# Perform RK on distribution
+					t += h
 		except IndexError:
 			t = 0
 			while t < tm:

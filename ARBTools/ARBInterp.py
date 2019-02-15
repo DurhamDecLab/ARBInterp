@@ -4,13 +4,12 @@ from numpy.core.umath_tests import inner1d
 import sys
 
 #######################release the schmoo########################################
-# Version 1.1, J9 code base
+# Version 1.3, L2 code base
 
 class tricubic:
-	def __init__(self, field, **kwargs):
+	def __init__(self, field, *args, **kwargs):
 		self.eps = 10*np.finfo(float).eps # Machine precision of floating point number
 		## Load field passed to class - can be x,y,z or norm of vector field, or scalar
-		print ("--- Setting up field interpolation ---")
 		self.inputfield = field			
 		## Analyse field, get shapes etc
 		self.getFieldParams()
@@ -22,7 +21,9 @@ class tricubic:
 		self.alphamask[-1] = 1
 		## Determining which mode to run in
 		if self.inputfield.shape[1] == 4:
-			print ('--- Scalar field, ignoring switches, interpolating for magnitude and gradient --- \n')
+			if not 'quiet' in args:
+				print ('--- Scalar field, ignoring switches, interpolating for magnitude and gradient --- \n')
+			self.Query = self.Query2
 			self.sQuery = self.sQuery2
 			self.rQuery = self.rQuery2
 			self.calcCoefficients = self.calcCoefficients2
@@ -31,7 +32,9 @@ class tricubic:
 		elif self.inputfield.shape[1] == 6:
 			if 'mode' in kwargs:
 				if kwargs['mode'] == 'vector':
-					print ('--- Vector field, interpolating for vector components --- \n')
+					if not 'quiet' in args:
+						print ('--- Vector field, interpolating for vector components --- \n')
+					self.Query = self.Query1
 					self.sQuery = self.sQuery1
 					self.rQuery = self.rQuery1
 					self.calcCoefficients = self.calcCoefficients1
@@ -43,7 +46,9 @@ class tricubic:
 					self.By = self.inputfield[:,4]
 					self.Bz = self.inputfield[:,5]
 				elif kwargs['mode'] == 'norm':
-					print ('--- Vector field, interpolating for magnitude and gradient --- \n')
+					if not 'quiet' in args:
+						print ('--- Vector field, interpolating for magnitude and gradient --- \n')
+					self.Query = self.Query2
 					self.sQuery = self.sQuery2
 					self.rQuery = self.rQuery2
 					self.calcCoefficients = self.calcCoefficients2
@@ -51,7 +56,9 @@ class tricubic:
 					self.alphan[:,-1] = np.nan
 					self.Bn = np.linalg.norm(self.inputfield[:,3:], axis=1)
 				elif kwargs['mode'] == 'both':
-					print ('--- Vector field, interpolating vector components plus magnitude and gradient --- \n')
+					if not 'quiet' in args:
+						print ('--- Vector field, interpolating vector components plus magnitude and gradient --- \n')
+					self.Query = self.Query3
 					self.sQuery = self.sQuery3
 					self.rQuery = self.rQuery3
 					self.calcCoefficients = self.calcCoefficients3
@@ -65,7 +72,9 @@ class tricubic:
 					self.Bz = self.inputfield[:,5]
 					self.Bn = np.linalg.norm(self.inputfield[:,3:], axis=1)
 				else:
-					print ('--- Vector field, invalid option, defaulting to interpolating for vector components --- \n')
+					if not 'quiet' in args:
+						print ('--- Vector field, invalid option, defaulting to interpolating for vector components --- \n')
+					self.Query = self.Query1
 					self.sQuery = self.sQuery1
 					self.rQuery = self.rQuery1
 					self.calcCoefficients = self.calcCoefficients1
@@ -77,7 +86,9 @@ class tricubic:
 					self.By = self.inputfield[:,4]
 					self.Bz = self.inputfield[:,5]
 			else:
-				print ('--- Vector field, no option selected, defaulting to interpolating for vector components --- \n')
+				if not 'quiet' in args:
+					print ('--- Vector field, no option selected, defaulting to interpolating for vector components --- \n')
+				self.Query = self.Query1
 				self.sQuery = self.sQuery1
 				self.rQuery = self.rQuery1
 				self.calcCoefficients = self.calcCoefficients1
@@ -162,6 +173,42 @@ class tricubic:
 
 		self.A = np.matmul(np.linalg.inv(B),D)
 
+	def Query1(self, query):
+		try:
+			if query.shape[1] > 1:
+				comps = self.rQuery1(query)
+				return comps
+			else:
+				comps = self.sQuery1(query)
+				return comps
+		except IndexError:
+			comps = self.sQuery1(query)
+			return comps
+		
+	def Query2(self, query):
+		try:
+			if query.shape[1] > 1:
+				norms, grads = self.rQuery2(query)
+				return norms, grads
+			else:
+				norm, grad = self.sQuery2(query)
+				return norm, grad
+		except IndexError:
+			norm, grad = self.sQuery2(query)
+			return norm, grad
+		
+	def Query3(self, query):
+		try:
+			if query.shape[1] > 1:
+				comps, norms, grads = self.rQuery3(query)
+				return comps, norms, grads
+			else:
+				comps, norm, grad = self.sQuery3(query)
+				return comps, norm, grad
+		except IndexError:
+			comps, norm, grad = self.sQuery3(query)
+			return comps, norm, grad
+			
 	def sQuery1(self, query):
 		### Removes particles that are outside of interpolation volume
 		if query[0] < self.xIntMin or query[0] > self.xIntMax or query[1] < self.yIntMin or query[1] > self.yIntMax or query[2] < self.zIntMin or query[2] > self.zIntMax:
@@ -238,7 +285,7 @@ class tricubic:
 			grad = np.array([np.dot(self.alphan[:,self.queryInd], xx*y*z)/self.hx, np.dot(self.alphan[:,self.queryInd], x*yy*z)/self.hy, np.dot(self.alphan[:,self.queryInd], x*y*zz)/self.hz])
 			## Magnitude, gradient
 			return norm, grad
-	
+
 	def sQuery3(self, query):
 		### Removes particles that are outside of interpolation volume
 		if query[0] < self.xIntMin or query[0] > self.xIntMax or query[1] < self.yIntMin or query[1] > self.yIntMax or query[2] < self.zIntMin or query[2] > self.zIntMax:
@@ -278,7 +325,7 @@ class tricubic:
 			norm =  inner1d(self.alphan[:,self.queryInd], (x*y*z))
 			grad = np.array([np.dot(self.alphan[:,self.queryInd], xx*y*z)/self.hx, np.dot(self.alphan[:,self.queryInd], x*yy*z)/self.hy, np.dot(self.alphan[:,self.queryInd], x*y*zz)/self.hz])
 			## Components, magnitude, gradient
-			return np.array((compx, compy, compz)),norm, grad
+			return np.array((compx, compy, compz)), norm, grad
 	
 	def rQuery1(self, query):
 		## Finds base cuboid indices of the points to be interpolated
@@ -396,7 +443,7 @@ class tricubic:
 		grads = np.transpose(np.array([(inner1d(tn, (xx*y*z))/self.hx), (inner1d(tn, (x*yy*z))/self.hy), (inner1d(tn, (x*y*zz))/self.hz) ]))
 
 		return norms, grads
-
+	
 	def rQuery3(self, query):
 		## Finds base cuboid indices of the points to be interpolated
 		### Length of sample distribution ###
