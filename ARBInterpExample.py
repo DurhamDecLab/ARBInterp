@@ -19,13 +19,13 @@ if __name__ == '__main__':
 	
 	output = Run.Query((coords[3]))
 	print ('\n')
-	print 'Single point query, scalar field:'
-	print output
+	print ('Single point query, scalar field:')
+	print (output)
 	print ('\n')
 	
 	Comps = Run.Query(coords)
 	print ('\n')
-	print 'Multi point query, scalar field:'
+	print ('Multi point query, scalar field:')
 	print (Comps)
 
 	
@@ -37,12 +37,12 @@ if __name__ == '__main__':
 	Run = tricubic(field, mode='both')	# mode options are 'both', 'vector' or 'norm', defaults to 'vector'. Pass arg 'quiet' to suppress setup text
 
 	output = Run.Query((coords[3]))
-	print 'Single point query, vector field:'
+	print ('Single point query, vector field:')
 	print ('\n')
-	print output
+	print (output)
 	print ('\n')
 	
 	Comps = Run.Query(coords)
-	print 'Multi point query, vector field:'
+	print ('Multi point query, vector field:')
 	print ('\n')
 	print (Comps)
