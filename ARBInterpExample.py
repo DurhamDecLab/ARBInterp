@@ -18,13 +18,13 @@ if __name__ == '__main__':
 	coords[:,2]=np.linspace(-2e-3,2e-3,20)
 	
 	output = Run.Query((coords[3]))
-	print '\n'
+	print ('\n')
 	print 'Single point query, scalar field:'
 	print output
-	print '\n'
+	print ('\n')
 	
 	Comps = Run.Query(coords)
-	print '\n'
+	print ('\n')
 	print 'Multi point query, scalar field:'
 	print (Comps)
 
@@ -38,11 +38,11 @@ if __name__ == '__main__':
 
 	output = Run.Query((coords[3]))
 	print 'Single point query, vector field:'
-	print '\n'
+	print ('\n')
 	print output
-	print '\n'
+	print ('\n')
 	
 	Comps = Run.Query(coords)
 	print 'Multi point query, vector field:'
-	print '\n'
+	print ('\n')
 	print (Comps)
