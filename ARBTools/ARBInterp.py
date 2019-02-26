@@ -357,7 +357,7 @@ class tricubic:
 
 		## Returns the interpolate magnitude and / or gradients at the query coordinates
 		if len(self.queryInds[np.where(self.alphamask[self.queryInds]==0)[0]]) > 0:
-			map(self.calcCoefficients, self.queryInds[np.where(self.alphamask[self.queryInds]==0)[0]])
+			list(map(self.calcCoefficients, self.queryInds[np.where(self.alphamask[self.queryInds]==0)[0]]))
 		
 		# Calculate interpolated values
 		x = np.tile(np.transpose(np.array([np.ones(N), queryCoords[:,0], queryCoords[:,0]**2, queryCoords[:,0]**3])), 16)
@@ -417,7 +417,7 @@ class tricubic:
 
 		## Returns the interpolate magnitude and / or gradients at the query coordinates
 		if len(self.queryInds[np.where(self.alphamask[self.queryInds]==0)[0]]) > 0:
-			map(self.calcCoefficients, self.queryInds[np.where(self.alphamask[self.queryInds]==0)[0]])
+			list(map(self.calcCoefficients, self.queryInds[np.where(self.alphamask[self.queryInds]==0)[0]]))
 		
 		# Calculate interpolated values
 		x = np.tile(np.transpose(np.array([np.ones(N), queryCoords[:,0], queryCoords[:,0]**2, queryCoords[:,0]**3])), 16)
@@ -474,7 +474,7 @@ class tricubic:
 
 		## Returns the interpolate magnitude and / or gradients at the query coordinates
 		if len(self.queryInds[np.where(self.alphamask[self.queryInds]==0)[0]]) > 0:
-			map(self.calcCoefficients, self.queryInds[np.where(self.alphamask[self.queryInds]==0)[0]])
+			list(map(self.calcCoefficients, self.queryInds[np.where(self.alphamask[self.queryInds]==0)[0]]))
 		
 		# Calculate interpolated values
 		x = np.tile(np.transpose(np.array([np.ones(N), queryCoords[:,0], queryCoords[:,0]**2, queryCoords[:,0]**3])), 16)

@@ -16,4 +16,4 @@
 
 # Provides tricubic interpolator as per Lekien and Marsden, with trajectory mapping for neutral atoms in a magnetic field
 
-__version__ = '1.3'
+__version__ = '1.4'
