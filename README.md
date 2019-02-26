@@ -36,18 +36,15 @@ The optional argument "quiet" can be passed, which suppresses screen print messa
 To query the interpolant field call the "Query" method. Input can be a single set of Cartesian coordinates x,y,z or a range of points as an array.
 If a range, the first 3 columns are assumed to be the x,y,z coordinates. Further columns can be present e.g. velocity components - these are ignored.
 
+Due to the boundary conditions the interpolatable volume is slightly smaller than the input field. A query at the edge will return a 'nan'. Further work will implement boundary conditions of the Neumann or Dirichlet types.
+
 Included Files
 --------------
 
 ARBInterp.py - contains tricubic class and methods for querying interpolant field.
-
 ARBInterpExample.py - loads an example field and queries it with sample coordinates.
-
 ExampleVectorField.csv - part of a magnetic field, as vector components.
-
 ExampleScalarField.csv - the same field as ExampleVectorField, but the norm / magnitude.
 
 ARBTrajec.py - contains function for creating random atom samples, and tracking their motion through a magnetic field with the interpolator
-
-ARBTrajecExample.py - creates test sample, saves it, iterates it through test field, saves output
-
+ARBTrajecExample.py - creates test sample, saves it, iterates it through test field, saves output. Note: particles may drift out of the interpolation volume, in which case a 'nan' is returned in their place.
