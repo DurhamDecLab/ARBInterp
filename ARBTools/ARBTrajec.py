@@ -4,7 +4,7 @@ import random as rand
 from ARBTools.ARBInterp import tricubic
 
 #######################release the schmoo########################################
-# Version 1.3, A4 code base
+# Version 1.4, A4 code base
 
 class trajectories:
 	def __init__(self, field, mass, moment):
