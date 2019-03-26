@@ -47,4 +47,5 @@ ExampleVectorField.csv - part of a magnetic field, as vector components, (x, y, 
 ExampleScalarField.csv - the same field as ExampleVectorField, but the norm / magnitude, (x,y,z,U).
 
 ARBTrajec.py - contains function for creating random atom samples, and tracking their motion through a magnetic field with the interpolator.
+
 ARBTrajecExample.py - creates test sample, saves it, iterates it through test field, saves output. Note: particles may drift out of the interpolation volume, in which case a 'nan' is returned in their place.
