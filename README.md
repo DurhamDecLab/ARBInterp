@@ -7,6 +7,9 @@ Introduction
 Python tools for interpolation of gridded data, either:
 
 Tricubic interpolation of 3D gridded data, based on the scheme by Lekien and Marsden: https://onlinelibrary.wiley.com/doi/epdf/10.1002/nme.1296
+
+Further details on this code here: https://openresearchsoftware.metajnl.com/articles/10.5334/jors.258/
+
 Takes in gridded data from comma-separated input file, either a scalar field U as an N x 4 (x,y,z,U) array or a vector field B as an N x 6 (x, y, z, Bx, By, Bz) array.
 
 or:
@@ -66,6 +69,9 @@ ARBTrajec.py - contains function for creating random atom samples, and tracking 
 
 ARBTrajecExample.py - creates test sample, saves it, iterates it through test field, saves output. Note: particles may drift out of the interpolation volume, in which case a 'nan' is returned in their place. Note 4D trajectories are not implemented yet but can be easily done.
 
+B_Matrix_3D.csv - This is the 64 x 64 interpolation matrix as described by Lekien and Marsden. Code to generate this is included in the tricubic class in ARBInterp.py.
+
+B_Matrix_4D.csv - this is the 256 x 256 interpolation matrix - paper to follow. Also included in ARBInterp.py, in the quadcubic class.
 
 Installation
 ------------
