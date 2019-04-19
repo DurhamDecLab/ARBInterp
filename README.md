@@ -69,9 +69,9 @@ ARBTrajec.py - contains function for creating random atom samples, and tracking 
 
 ARBTrajecExample.py - creates test sample, saves it, iterates it through test field, saves output. Note: particles may drift out of the interpolation volume, in which case a 'nan' is returned in their place. Note 4D trajectories are not implemented yet but can be easily done.
 
-B_Matrix_3D.csv - This is the 64 x 64 interpolation matrix as described by Lekien and Marsden. Code to generate this is included in the tricubic class in ARBInterp.py.
+B_Matrix_3D.csv - This is the 64 x 64 interpolation matrix as described by Lekien and Marsden. Code to generate this is included in the tricubic class in ARBInterp.py. NB: this assumes components of b-vector are ordered f,df/dx,df/dy,df/dz,d2f/dxdy,d2f/dxdz,d2f/dydz,d3f/dxdydz.
 
-B_Matrix_4D.csv - this is the 256 x 256 interpolation matrix - paper to follow. Also included in ARBInterp.py, in the quadcubic class.
+B_Matrix_4D.csv - this is the 256 x 256 interpolation matrix - paper to follow. Also included in ARBInterp.py, in the quadcubic class. NB: this assumes components of b-vector are ordered f,df/dx,df/dy,df/dz,df/dt,d2f/dxdy,d2f/dxdz,d2f/dxdt,d2f/dydz,d2f/dydt,d2x/dzdt,d3f/dxdydz,d3f/dxdydt,d3f/dxdzdt,d3f/dydzdt,d4f/dxdydzdt.
 
 Installation
 ------------
