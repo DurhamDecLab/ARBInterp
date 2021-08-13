@@ -26,6 +26,8 @@ Package Dependencies
 Usage
 -----
 
+Note: Due to the boundary conditions the interpolatable volume is slightly smaller than the input field. A query at the edge will return a 'nan'. Further work will implement boundary conditions of the Neumann or Dirichlet types.
+
 Instantiate the 'tricubic' / 'quadcubic' class by passing a loaded field to it. It is not necessary to order the (x,y,z) / (x,y,z,t) coordinates - the code will do that itself.
 
 NOTE: a regular field (i.e. with equal grid spacing in all dimensions) must be supplied. The spacing along all axes does not have to match, only be consistent along each.
@@ -47,7 +49,7 @@ The optional argument "quiet" can be passed, which suppresses screen print messa
 To query the interpolant field call the "Query" method. Input can be a single set of Cartesian coordinates (x,y,z) / (x,y,z,t) or a range of points as an array.
 If a range, the first 3/4 columns are assumed to be the (x,y,z) / (x,y,z,t) coordinates. Further columns can be present e.g. velocity components - these are ignored.
 
-Due to the boundary conditions the interpolatable volume is slightly smaller than the input field. A query at the edge will return a 'nan'. Further work will implement boundary conditions of the Neumann or Dirichlet types.
+
 
 Included Files
 --------------
