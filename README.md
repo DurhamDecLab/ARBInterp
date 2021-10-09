@@ -49,8 +49,6 @@ The optional argument "quiet" can be passed, which suppresses screen print messa
 To query the interpolant field call the "Query" method. Input can be a single set of Cartesian coordinates (x,y,z) / (x,y,z,t) or a range of points as an array.
 If a range, the first 3/4 columns are assumed to be the (x,y,z) / (x,y,z,t) coordinates. Further columns can be present e.g. velocity components - these are ignored.
 
-
-
 Included Files
 --------------
 
@@ -67,10 +65,6 @@ ARB4DInterpExample.py - loads an example time-varying 4D field and queries it wi
 Example4DVectorField.csv - part of a magnetic field, as vector components, (x, y, z, t, Bx, By, Bz).
 
 Example4DScalarField.csv - the same field as Example4DVectorField, but the norm / magnitude, (x,y,z,t,U).
-
-ARBTrajec.py - contains function for creating random atom samples, and tracking their motion through a magnetic field with the interpolator.
-
-ARBTrajecExample.py - creates test sample, saves it, iterates it through test field, saves output. Note: particles may drift out of the interpolation volume, in which case a 'nan' is returned in their place. Note 4D trajectories are not implemented yet but can be easily done.
 
 B_Matrix_3D.csv - This is the 64 x 64 interpolation matrix as described by Lekien and Marsden. Code to generate this is included in the tricubic class in ARBInterp.py. NB: this assumes components of b-vector are ordered f,df/dx,df/dy,df/dz,d2f/dxdy,d2f/dxdz,d2f/dydz,d3f/dxdydz.
 
