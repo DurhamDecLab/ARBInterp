@@ -14,7 +14,7 @@ Takes in gridded data from comma-separated input file, either a scalar field U a
 
 or:
 
-Quadcubic interpolation of 4D gridded data. Paper to follow about this.
+Quadcubic interpolation of 4D gridded data. 
 Takes in gridded data from comma-separated input file, either a scalar field U as an N x 5 (x,y,z,t,U) array or a vector field B as an N x 7 (x, y, z, t, Bx, By, Bz) array.
 
 Background and 4D method see: https://arxiv.org/abs/1904.09869
