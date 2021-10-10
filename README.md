@@ -73,4 +73,4 @@ B_Matrix_4D.csv - this is the 256 x 256 interpolation matrix - paper to follow. 
 Installation
 ------------
 
-Download zip file from dist folder and extract. On Linux run "sudo python setup.py install" or similar. On Windows / Mac - you'll have a better idea than me!
+Linux; download zip / tar.gz file from dist folder and extract, run "sudo python setup.py install", or install wheel via "pip install ARBInterp-1.8-py3-none-any.whl". On Windows / Mac, the wheel may work but I am not able to test. No dependencies are included but the library only needs numpy, as of version 1.8 I have tested on Python 3.9.6 and numpy 1.21.1. All Python 2 support is dropped.
