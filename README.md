@@ -1,9 +1,8 @@
-ARBTools
-=======
+# ARBInterp
 
-Introduction
-------------
+Python tools for interpolating 3D or 4D fields
 
+## Introduction
 Python tools for interpolation of gridded data, either:
 
 Tricubic interpolation of 3D gridded data, based on the scheme by Lekien and Marsden: https://onlinelibrary.wiley.com/doi/epdf/10.1002/nme.1296
@@ -19,12 +18,19 @@ Takes in gridded data from comma-separated input file, either a scalar field U a
 
 Background and 4D method see: https://arxiv.org/abs/1904.09869
 
-Package Dependencies
---------------------
-- NumPy: Required.
 
-Usage
------
+## Installation
+
+```bash
+$ pip install git+https://github.com/DurhamDecLab/ARBInterp.git
+```
+As of version 1.8 I have tested on Python 3.9.6 and numpy 1.21.1. All Python 2 support is dropped.
+
+
+### Dependencies
+- numpy
+
+## Usage
 
 Note: Due to the boundary conditions the interpolatable volume is slightly smaller than the input field. A query at the edge will return a 'nan'. Further work will implement boundary conditions of the Neumann or Dirichlet types.
 
@@ -49,28 +55,35 @@ The optional argument "quiet" can be passed, which suppresses screen print messa
 To query the interpolant field call the "Query" method. Input can be a single set of Cartesian coordinates (x,y,z) / (x,y,z,t) or a range of points as an array.
 If a range, the first 3/4 columns are assumed to be the (x,y,z) / (x,y,z,t) coordinates. Further columns can be present e.g. velocity components - these are ignored.
 
-Included Files
---------------
+## Examples and included files
 
-ARBInterp.py - contains tricubic and quadcubic classes and methods for querying interpolant field.
+`ARBInterp.py` - contains tricubic and quadcubic classes and methods for querying interpolant field.
 
-ARB3DInterpExample.py - loads an example 3D field and queries it with sample coordinates.
+`ARB3DInterpExample.py` - loads an example 3D field and queries it with sample coordinates.
 
-Example3DVectorField.csv - part of a magnetic field, as vector components, (x, y, z, Bx, By, Bz).
+`Example3DVectorField.csv` - part of a magnetic field, as vector components, (x, y, z, Bx, By, Bz).
 
-Example3DScalarField.csv - the same field as Example3DVectorField, but the norm / magnitude, (x,y,z,U).
+`Example3DScalarField.csv` - the same field as Example3DVectorField, but the norm / magnitude, (x,y,z,U).
 
-ARB4DInterpExample.py - loads an example time-varying 4D field and queries it with sample coordinates.
+`ARB4DInterpExample.py` - loads an example time-varying 4D field and queries it with sample coordinates.
 
-Example4DVectorField.csv - part of a magnetic field, as vector components, (x, y, z, t, Bx, By, Bz).
+`Example4DVectorField.csv` - part of a magnetic field, as vector components, (x, y, z, t, Bx, By, Bz).
 
-Example4DScalarField.csv - the same field as Example4DVectorField, but the norm / magnitude, (x,y,z,t,U).
+`Example4DScalarField.csv` - the same field as Example4DVectorField, but the norm / magnitude, (x,y,z,t,U).
 
-B_Matrix_3D.csv - This is the 64 x 64 interpolation matrix as described by Lekien and Marsden. Code to generate this is included in the tricubic class in ARBInterp.py. NB: this assumes components of b-vector are ordered f,df/dx,df/dy,df/dz,d2f/dxdy,d2f/dxdz,d2f/dydz,d3f/dxdydz.
+`B_Matrix_3D.csv` - This is the 64 x 64 interpolation matrix as described by Lekien and Marsden. Code to generate this is included in the tricubic class in ARBInterp.py. NB: this assumes components of b-vector are ordered f,df/dx,df/dy,df/dz,d2f/dxdy,d2f/dxdz,d2f/dydz,d3f/dxdydz.
 
-B_Matrix_4D.csv - this is the 256 x 256 interpolation matrix - paper to follow. Also included in ARBInterp.py, in the quadcubic class. NB: this assumes components of b-vector are ordered f,df/dx,df/dy,df/dz,df/dt,d2f/dxdy,d2f/dxdz,d2f/dxdt,d2f/dydz,d2f/dydt,d2x/dzdt,d3f/dxdydz,d3f/dxdydt,d3f/dxdzdt,d3f/dydzdt,d4f/dxdydzdt.
+`B_Matrix_4D.csv` - this is the 256 x 256 interpolation matrix - paper to follow. Also included in ARBInterp.py, in the quadcubic class. NB: this assumes components of b-vector are ordered f,df/dx,df/dy,df/dz,df/dt,d2f/dxdy,d2f/dxdz,d2f/dxdt,d2f/dydz,d2f/dydt,d2x/dzdt,d3f/dxdydz,d3f/dxdydt,d3f/dxdzdt,d3f/dydzdt,d4f/dxdydzdt.
 
-Installation
-------------
 
-Linux; download zip / tar.gz file from dist folder and extract, run "sudo python setup.py install", or install wheel via "pip install ARBInterp-1.8-py3-none-any.whl". On Windows / Mac, the wheel may work but I am not able to test. No dependencies are included but the library only needs numpy, as of version 1.8 I have tested on Python 3.9.6 and numpy 1.21.1. All Python 2 support is dropped.
+## Contributing
+
+Interested in contributing? Check out the contributing guidelines. Please note that this project is released with a Code of Conduct. By contributing to this project, you agree to abide by its terms.
+
+## License
+
+`ARBInterp` was created by Paul Walker. It is licensed under the terms of the GNU General Public License v3.0 license.
+
+## Credits
+
+`ARBInterp` was created by Paul Walker. Packaged by Carmelo Mordini with [`cookiecutter`](https://cookiecutter.readthedocs.io/en/latest/) and the `py-pkgs-cookiecutter` [template](https://github.com/py-pkgs/py-pkgs-cookiecutter).

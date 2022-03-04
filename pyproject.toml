@@ -1,0 +1,38 @@
+[tool.poetry]
+name = "ARBInterp"
+version = "1.8.1"
+description = "Python tools for interpolating 3D or 4D fields"
+authors = ["Paul Walker"]
+license = "GNU General Public License v3.0"
+readme = "README.md"
+packages = [
+    { include = "ARBInterp", from = "src" }
+]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+numpy = "^1.21.1"
+
+[tool.poetry.dev-dependencies]
+pytest = "^7.0.0"
+pytest-cov = "^3.0.0"
+Sphinx = "^4.4.0"
+myst-nb = "^0.13.2"
+sphinx-autoapi = "^1.8.4"
+sphinx-rtd-theme = "^1.0.0"
+
+
+[tool.semantic_release]
+version_variable = "pyproject.toml:version" # version location
+branch = "main"                             # branch to make releases of
+changelog_file = "CHANGELOG.md"             # changelog file
+build_command = "poetry build"              # build dists
+dist_path = "dist/"                         # where to put dists
+upload_to_release = true                    # auto-create GitHub release
+upload_to_pypi = false                      # don't auto-upload to PyPI
+remove_dist = false                         # don't remove dists
+patch_without_tag = true                    # patch release by default
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
