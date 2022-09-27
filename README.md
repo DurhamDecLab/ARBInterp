@@ -7,7 +7,7 @@ Python tools for interpolation of gridded data, either:
 
 Tricubic interpolation of 3D gridded data, based on the scheme by Lekien and Marsden: https://onlinelibrary.wiley.com/doi/epdf/10.1002/nme.1296
 
-Further details on this code here: https://openresearchsoftware.metajnl.com/articles/10.5334/jors.258/
+If you use this code in academic work it would be very much appreciated if you would cite: https://openresearchsoftware.metajnl.com/articles/10.5334/jors.258/
 
 Takes in gridded data from comma-separated input file, either a scalar field U as an N x 4 (x,y,z,U) array or a vector field B as an N x 6 (x, y, z, Bx, By, Bz) array.
 
