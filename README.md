@@ -40,7 +40,7 @@ NOTE: a regular field (i.e. with equal grid spacing in all dimensions) must be s
 
 The (3D) interpolant field does not have to be cubic, only cuboid.
 
-If an Nx4 (3D) or Nx5 (4D) array is passed the tricubic / quadcubic class will operate in scalar mode and return both the interpolated field magnitude and partial derivatives. 
+If an Nx4 (3D) or Nx5 (4D) array is passed the tricubic / quadcubic class will operate in scalar mode and return both the interpolated field value and partial derivatives. 
 
 If an Nx6 (3D) or Nx7 (4D) array is passed the tricubic / quadcubic class will accept an optional kword argument 'mode' with one of the following switches:
 
