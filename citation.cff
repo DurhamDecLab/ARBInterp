@@ -1,0 +1,9 @@
+cff-version: 1.2.0
+title: ARBInterp
+message: "If you use this software, please cite the associated publication."
+authors:
+  - family-names: Walker
+    given-names: Paul
+repository-code: https://github.com/DurhamDecLab/ARBInterp
+DOI: 10.5334/jors.258
+license: MIT, GPLv3
