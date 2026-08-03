@@ -80,9 +80,14 @@ If a range, the first 3/4 columns are assumed to be the (x,y,z) / (x,y,z,t) coor
 
 Interested in contributing? Check out the contributing guidelines. Please note that this project is released with a Code of Conduct. By contributing to this project, you agree to abide by its terms.
 
-## License
+## Licence
 
-`ARBInterp` was created by Paul Walker. It is licensed under the terms of the GNU General Public License v3.0 license.
+ARBInterp is dual-licensed under:
+
+- GNU GPL v3.0 or later
+- MIT License
+
+You may use this software under the terms of either licence, at your option.
 
 ## Credits
 
