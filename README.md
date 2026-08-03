@@ -85,7 +85,7 @@ Interested in contributing? Check out the contributing guidelines. Please note t
 ARBInterp is dual-licensed under:
 
 - GNU GPL v3.0 or later
-- MIT License
+- MIT Licence
 
 You may use this software under the terms of either licence, at your option.
 
