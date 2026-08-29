@@ -1,5 +1,5 @@
 import numpy as np
-from ARBTools.ARBInterp import tricubic
+from ARBInterp.ARBInterp import tricubic
 from sys import platform
 
 ######################################################################
