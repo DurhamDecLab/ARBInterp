@@ -1,5 +1,5 @@
 import numpy as np
-from ARBTools.ARBInterp import quadcubic
+from ARBInterp.ARBInterp import quadcubic
 from sys import platform
 
 ######################################################################
